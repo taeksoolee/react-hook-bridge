@@ -25,9 +25,10 @@ export function useChildWindow<T>({
     // _window.current = opener;
     opener?.postMessage({[TYPE_KEY]: bridgeKey}, connectUrl);
 
-    const handler = (e: MessageEvent) => {
-      if(e.origin === connectUrl) {
+    const handler = (e: MessageEvent) => {      
+      if(e.origin === connectUrl && e.data) {
         const data = e.data[MESSAGE_KEY];
+        if(data) return;
         callback && callback(data);
 
         setLogs([
