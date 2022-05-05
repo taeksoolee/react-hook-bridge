@@ -5,12 +5,14 @@ interface UseParentWindowParams<T> {
   bridgeKey: string;
   connectUrl: string;
   getData: () => T;
+  logging: boolean;
 };
 
 export function useParentWindow<T>({
   bridgeKey, // requirement
   connectUrl, // requirement
   getData, 
+  logging,
 }: UseParentWindowParams<T>) {
   // !getData && console.warn('useParentWindow : getData in params is undefeined');
   // !connectUrl && console.warn('useParentWindow : connectUrl in params is undefeined');
@@ -29,6 +31,7 @@ export function useParentWindow<T>({
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
+      logging && console.log('useParentWindow', e);
       e.origin === connectUrl 
         && e.data[TYPE_KEY] === bridgeKey
           && getData && _window.current?.postMessage({[MESSAGE_KEY]: getData()}, connectUrl);
