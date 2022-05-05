@@ -28,7 +28,7 @@ export function useChildWindow<T>({
     const handler = (e: MessageEvent) => {      
       if(e.origin === connectUrl && e.data) {
         const data = e.data[MESSAGE_KEY];
-        if(data) return;
+        if(!data) return;
         callback && callback(data);
 
         setLogs([
