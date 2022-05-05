@@ -1,0 +1,1 @@
+{"version":3,"file":"useParentWindow.d.ts","sourceRoot":"","sources":["../src/useParentWindow.ts"],"names":[],"mappings":"AAGA,UAAU,qBAAqB,CAAC,CAAC;IAC/B,SAAS,EAAE,MAAM,CAAC;IAClB,UAAU,EAAE,MAAM,CAAC;IACnB,OAAO,EAAE,MAAM,CAAC,CAAC;CAClB;AAED,wBAAgB,eAAe,CAAC,CAAC,EAAE,EACjC,SAAS,EAAE,cAAc;AACzB,UAAU,EAAE,cAAc;AAC1B,OAAO,GACR,EAAE,qBAAqB,CAAC,CAAC,CAAC,kBA8B1B"}
