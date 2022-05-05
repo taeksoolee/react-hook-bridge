@@ -23,7 +23,7 @@ export function useChildWindow<T>({
   useEffect(() => {
     const opener = window.opener;
     // _window.current = opener;
-    opener.postMessage({[TYPE_KEY]: bridgeKey}, connectUrl);
+    opener?.postMessage({[TYPE_KEY]: bridgeKey}, connectUrl);
 
     const handler = (e: MessageEvent) => {
       if(e.origin === connectUrl) {
