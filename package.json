@@ -1,7 +1,7 @@
 {
   "name": "react-hook-bridge",
   "version": "0.0.5",
-  "description": "functions between the two windows ",
+  "description": "It is a library that provides communication function between two windows as react-hook",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
   "umd:main": "dist/index.umd.js",
