@@ -27,6 +27,7 @@
     "build:esm": "rollup -c ./scripts/rollup/rollup.esm.config.js",
     "build:modern": "rollup -c ./scripts/rollup/rollup.config.js",
     "type": "tsc --noEmit",
+    "prepublish": "npm run build && npm run type",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
