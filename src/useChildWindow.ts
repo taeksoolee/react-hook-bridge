@@ -13,7 +13,7 @@ interface Log<T> {
   message: T;
 }
 
-export function useChildWindow<T>({
+export function useChildwindow<T>({
   bridgeKey, // requirement
   connectUrl, // requirement
   callback, // (data) => void 

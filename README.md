@@ -5,10 +5,10 @@
 ``` javascript
 // components/Parent.jsx
 import React from 'react';
-import { useParentWindow } from 'react-hook-bridge';
+import { useParentwindow } from 'react-hook-bridge';
 
 export default function Parent() {
-  const [open] = useParentWindow({
+  const [open] = useParentwindow({
     bridgeKey: 'hello',
     connectUrl: 'http://localhost:3001', // Child Url
     getData: () => ({token: 'this is token string'}),
@@ -27,10 +27,10 @@ export default function Parent() {
 ``` javascript
 // components/Child.jsx
 import React from 'react';
-import { useChildWindow } from 'react-hook-bridge';
+import { useChildwindow } from 'react-hook-bridge';
 
 export default function Child() {
-  const [logs] = useChildWindow({
+  const [logs] = useChildwindow({
     bridgeKey: 'hello',
     connectUrl: 'http://localhost:3000', // Parent Url
     callback: (data) => {

@@ -8,7 +8,7 @@ interface UseParentWindowParams<T> {
   logging: boolean;
 };
 
-export function useParentWindow<T>({
+export function useParentwindow<T>({
   bridgeKey, // requirement
   connectUrl, // requirement
   getData, 

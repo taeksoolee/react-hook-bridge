@@ -1,5 +1,5 @@
-export * from './useChildWindow';
-export * from './useParentWindow';
+export * from './useChildwindow';
+export * from './useParentwindow';
 
 // export default {
 //   useParentWindow,
