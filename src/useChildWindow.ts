@@ -13,18 +13,31 @@ interface Log<T> {
   message: T;
 }
 
+/**
+ * @description
+ * regist child window
+ * 
+ * @param props - bridgeKey, childUrl, getData, logging
+ * bridgeKey - If child and parent are applied with the same value, 
+ *             callback is called when a value is received
+ * childUrl - set parent
+ * callback - callback with the received value as param
+ * loggin - logging enable flag
+ * 
+ * @return [open, close]
+ * open - open child window
+ * close - close child window
+ */
 export function useChildwindow<T>({
-  bridgeKey, // requirement
-  parentUrl, // requirement
-  callback, // (data) => void 
+  bridgeKey,
+  parentUrl,
+  callback,
   logging,
 }: UseChildWindowParams<T>) {
-  // const _window = useRef();
   const [logs, setLogs] = useState<Log<T>[]>([]);
 
   useEffect(() => {
     const opener = window.opener;
-    // _window.current = opener;
     opener?.postMessage({[TYPE_KEY]: bridgeKey}, parentUrl);
 
     const handler = (e: MessageEvent) => {

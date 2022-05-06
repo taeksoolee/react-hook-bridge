@@ -8,17 +8,28 @@ interface UseParentWindowParams<T> {
   logging: boolean;
 };
 
+/**
+ * @description
+ * regist parent window
+ * 
+ * @param props - bridgeKey, childUrl, getData, logging
+ * bridgeKey - If child and parent are applied with the same value, 
+ *             the return value of getData function is transmitted to the child window
+ *             when the child window is opened.
+ * childUrl - set child
+ * getData - factory function for transmited data
+ * loggin - logging enable flag
+ * 
+ * @return [open, close]
+ * open - open child window
+ * close - close child window
+ */
 export function useParentwindow<T>({
-  bridgeKey, // requirement
-  childUrl, // requirement
+  bridgeKey,
+  childUrl,
   getData, 
   logging,
 }: UseParentWindowParams<T>) {
-  // !getData && console.warn('useParentWindow : getData in params is undefeined');
-  // !connectUrl && console.warn('useParentWindow : connectUrl in params is undefeined');
-
-  // bridgeKey = bridgeKey || 'bridgeKey';
-
   const _window = useRef<Window | null>(null);
 
   const open = () => {
