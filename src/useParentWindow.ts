@@ -3,14 +3,14 @@ import { MESSAGE_KEY, TYPE_KEY } from './constaints';
 
 interface UseParentWindowParams<T> {
   bridgeKey: string;
-  connectUrl: string;
+  childUrl: string;
   getData: () => T;
   logging: boolean;
 };
 
 export function useParentwindow<T>({
   bridgeKey, // requirement
-  connectUrl, // requirement
+  childUrl, // requirement
   getData, 
   logging,
 }: UseParentWindowParams<T>) {
@@ -22,7 +22,7 @@ export function useParentwindow<T>({
   const _window = useRef<Window | null>(null);
 
   const open = () => {
-    _window.current = window.open(connectUrl);
+    _window.current = window.open(childUrl);
   }
 
   const close = () => {
@@ -32,9 +32,9 @@ export function useParentwindow<T>({
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       logging && console.log('useParentWindow', e);
-      e.origin === connectUrl 
+      e.origin === childUrl 
         && e.data[TYPE_KEY] === bridgeKey
-          && getData && _window.current?.postMessage({[MESSAGE_KEY]: getData()}, connectUrl);
+          && getData && _window.current?.postMessage({[MESSAGE_KEY]: getData()}, childUrl);
     };
 
     window.addEventListener('message', handler);

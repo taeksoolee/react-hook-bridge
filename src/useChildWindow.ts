@@ -3,7 +3,7 @@ import { MESSAGE_KEY, TYPE_KEY } from './constaints';
 
 interface UseChildWindowParams<T> {
   bridgeKey: string;
-  connectUrl: string;
+  parentUrl: string;
   callback: (data: T) => void;
   logging: boolean,
 }
@@ -15,7 +15,7 @@ interface Log<T> {
 
 export function useChildwindow<T>({
   bridgeKey, // requirement
-  connectUrl, // requirement
+  parentUrl, // requirement
   callback, // (data) => void 
   logging,
 }: UseChildWindowParams<T>) {
@@ -25,11 +25,11 @@ export function useChildwindow<T>({
   useEffect(() => {
     const opener = window.opener;
     // _window.current = opener;
-    opener?.postMessage({[TYPE_KEY]: bridgeKey}, connectUrl);
+    opener?.postMessage({[TYPE_KEY]: bridgeKey}, parentUrl);
 
     const handler = (e: MessageEvent) => {
       logging && console.log('useChildWindow', e);
-      if(e.origin === connectUrl && e.data) {
+      if(e.origin === parentUrl && e.data) {
         const data = e.data[MESSAGE_KEY];
         if(!data) return;
         callback && callback(data);
